@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>@ViewBag.Title - Admin</title>
+    <link href="../../Content/css/stylesheets.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/style_sp.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/style_boder.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/img/logo/admin2.png" type="image/png" />
+    <!--button-->
+    <link href="~/Content/csss/button.css" media="screen" rel="stylesheet">
+    <script type='text/javascript' src='../../Scripts/js/plugins/jquery/jquery-1.9.1.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jquery/jquery-ui-1.10.1.custom.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jquery/globalize.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/other/excanvas.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/other/jquery.mousewheel.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/bootstrap/bootstrap.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/cookies/jquery.cookies.2.2.0.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jflot/jquery.flot.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jflot/jquery.flot.stack.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jflot/jquery.flot.pie.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/jflot/jquery.flot.resize.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/epiechart/jquery.easy-pie-chart.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/sparklines/jquery.sparkline.min.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js'></script>
+    <script type='text/javascript' src="../../Scripts/js/plugins/uniform/jquery.uniform.min.js"></script>
+    <script type='text/javascript' src="../../Scripts/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+
+    <script type='text/javascript' src='../../Scripts/js/plugins/shbrush/XRegExp.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/shbrush/shCore.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/shbrush/shBrushXml.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/shbrush/shBrushJScript.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/plugins/shbrush/shBrushCss.js'></script>
+
+    <script type='text/javascript' src='../../Scripts/js/plugins.js'></script>
+    <script type='text/javascript' src='../../Scripts/js/charts.js'></script>
+
+    <script type='text/javascript' src='../../Scripts/js/actions.js'></script>
+
+    @*  Xóa quảng cáo somee *@
+
+    <script src='~/Scripts/removesomee.js' type='text/javascript'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+</head>
+<body>
+    @*<div id="loader"><img src="../../Images/img/loader.gif" /></div>*@
+    <div class="wrapper">
+
+        <div class="sidebar" style="height:1000px;">
+            <div class="top">
+                <div class="user">
+                    @{
+                        // Kiểm tra nếu thông tin admin tồn tại trong Session
+                        var adSession = Context.Session.GetString("Taikhoanadmin");
+                        var ad = !string.IsNullOrEmpty(adSession) ? Newtonsoft.Json.JsonConvert.DeserializeObject<WebThuCung.Models.Admin>(adSession) : null;
+                    }
+
+                    @if (ad != null)
+                    {
+                        <img src="@Url.Content("~/img/" + ad.Avatar)" alt="Avatar" align="left" height="70" width="70" style="padding: 10px;" />
+
+                        <br />
+                        <a href="@Url.Action("thongtinadmin", "Admin")" class="name">
+                            <span>@ad.Name</span><br />
+                            <span>@ad.Email</span>
+                        </a>
+
+                        <br />
+                        <a href="@Url.Action("dangxuat", "Admin")" style="color:white">Đăng Xuất</a>
+                    }
+                    else
+                    {
+                    // Nếu không có thông tin admin trong session, hiển thị thông báo đăng nhập
+                        <p>Chưa đăng nhập. Vui lòng <a href="@Url.Action("dangnhap", "Admin")">đăng nhập</a>.</p>
+                    }
+                </div>
+
+
+
+                <hr />
+            </div>
+            <div class="nContainer">
+                <ul class="navigation">
+                    <li class="active"><a href="@Url.Action("index","Admin")" class="blblue">Trang chủ</a></li>
+                    <li>
+                        <a href="@Url.Action("index","User")" class="blyellow">Trang người dùng</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("listadmin","Admin")" class="blred">Admin</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("DonDatHang","DonHang")" class="blred">Đơn đặt hàng</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","ThuongHieu")" class="blyellow">Thương hiệu</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","KhachHang")" class="bldblue">Khách hàng</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Loai")" class="blpurple">Loại sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Mausac")" class="blgreen">Màu sắc</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","KichThuoc")" class="blred">Kích thước</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","KhoHang")" class="bldblue">Kho sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","SanPham")" class="blorange">Sản Phẩm</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Hinh")" class="blpurple">Hình ảnh mô tả</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("DSPhanQuyen","AdminPQ")" class="blred">Phân Quyền</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","ThongKe")" class="blred">Thống Kê</a>
+                    </li>
+
+
+                </ul>
+                <a class="close">
+                    <span class="ico-remove"></span>
+                </a>
+            </div>
+
+            @* HIỂN THỊ TRANG LỊCH Ở TRANG ADMIN *@
+            @*<div class="widget">
+            <div class="datepicker"></div>
+            </div>*@
+
+        </div>
+    </div>
+    <div class="body">
+        @RenderBody()
+    </div>
+
+    <div class="dialog" id="source" style="display: none;" title="Source"></div>
+
+    <div id="fcAddEvent" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="fcAddEventLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="fcAddEventLabel">Thêm sự kiện mới</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row-fluid">
+                <div class="span3">Title:</div>
+                <div class="span9"><input type="text" id="fcAddEventTitle" /></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="fcAddEventButton">Thêm</button>
+        </div>
+    </div>
+</body>
+</html>

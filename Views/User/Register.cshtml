@@ -1,0 +1,132 @@
+﻿@model WebThuCung.Dto.RegisterDto
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+
+<section id="banner" class="py-3" style="background: #F9F3EC;">
+    <div class="container">
+        <div class="hero-content py-5 my-3">
+            <h2 class="display-1 mt-3 mb-0">Account</h2>
+            <nav class="breadcrumb">
+                <a class="breadcrumb-item nav-link" href="#">Home</a>
+                <a class="breadcrumb-item nav-link" href="#">Pages</a>
+                <span class="breadcrumb-item active" aria-current="page">Account</span>
+            </nav>
+        </div>
+    </div>
+</section>
+<section id="register" class="login-tabs padding-large" ">
+    <div class="container my-5 py-5">
+        <div class="row">
+            <div class="tabs-listing">
+                <nav>
+                    <div class="nav nav-tabs d-flex justify-content-center border-dark-subtle mb-3" id="nav-tab" role="tablist">
+                        <a href ="@Url.Action("Login", "User")" class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase active" id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in" aria-selected="true">
+                            Log In
+                        </button>
+                        <a  class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase" id="nav-register-tab" role="button">
+                            Sign Up
+                        </a>
+                       
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                    <!-- Sign Up Tab -->
+                    <div class="tab-pane fade active show" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                        <div class="col-lg-8 offset-lg-2 mt-5">
+                            <p class="mb-0">Sign-up With Social</p>
+                            <hr class="my-1">
+                            <div class="row mt-4 mb-5">
+                                <div class="d-grid col-md-6 my-2">
+                                    <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 ">
+                                        <div class="d-flex flex-wrap justify-content-center">
+                                            <iconify-icon icon="ion:logo-google" class="signup-social-icon me-2"></iconify-icon>
+                                            <p class="mb-0">Google</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-grid col-md-6 my-2">
+                                    <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 ">
+                                        <div class="d-flex flex-wrap justify-content-center">
+                                            <iconify-icon icon="ion:logo-facebook" class="signup-social-icon me-2"></iconify-icon>
+                                            <p class="mb-0">Facebook</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="mb-0">Or Sign-Up With Email</p>
+                            <hr class="my-1">
+
+                            @using (Html.BeginForm("Register", "User", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <!-- Username -->
+                                <div class="form-input col-lg-12 my-4">
+                                    @Html.TextBoxFor(model => model.userCustomer, new { @class = "form-control mb-3 p-4", placeholder = "Nhập tên đăng nhập" })
+                                    @Html.ValidationMessageFor(model => model.userCustomer, "", new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-input col-lg-12 my-4">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control mb-3 p-4", placeholder = "Nhập địa chỉ email của bạn" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Password -->
+                                <div class="form-input col-lg-12 my-4">
+                                    @Html.PasswordFor(model => model.paswordCusstomer, new { @class = "form-control mb-3 p-4", placeholder = "Tạo mật khẩu" })
+                                    @Html.ValidationMessageFor(model => model.paswordCusstomer, "", new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div class="form-input col-lg-12 my-4">
+                                    @Html.PasswordFor(model => model.confirmPassword, new { @class = "form-control mb-3 p-4", placeholder = "Nhập lại mật khẩu" })
+                                    @Html.ValidationMessageFor(model => model.confirmPassword, "", new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Full Name -->
+                                <div class="form-input col-lg-12 my-4">
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control mb-3 p-4", placeholder = "Nhập họ tên" })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="form-input col-lg-12 my-4">
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control mb-3 p-4", placeholder = "Nhập số điện thoại", onkeypress = "return isNumberKey(event)" })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid my-3">
+                                    <button type="submit" class="btn btn-dark btn-lg rounded-1">Register it now</button>
+                                </div>
+
+                                <!-- Back to Login -->
+                                <p class="text-center mt-3">
+                                    <a href="@Url.Action("Login", "User")" class="text-primary fw-bold">Trở về trang đăng nhập</a>
+                                </p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>
