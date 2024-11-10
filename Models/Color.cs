@@ -13,7 +13,6 @@ namespace WebThuCung.Models
         [MaxLength(100)]
         public string nameColor { get; set; }
 
-        // Navigation Property
-        public ICollection<Product> Products { get; set; }
+        public ICollection<ProductColor> ProductColors { get; set; }
     }
 }

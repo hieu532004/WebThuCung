@@ -707,7 +707,7 @@ progress {
 }
 
 .img-fluid {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
 }
 
@@ -9188,6 +9188,7 @@ textarea.form-control-lg {
 }
 
 .z-1 {
+    color: red;
   z-index: 1 !important;
 }
 

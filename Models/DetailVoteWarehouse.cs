@@ -25,5 +25,9 @@ namespace WebThuCung.Models
         // Navigation Properties
         public VoteWarehouse VoteWarehouse { get; set; }
         public Product Product { get; set; }
+        public decimal CalculateTotalPriceWare()
+        {
+            return Quantity * purchasePrice; // Tính toán tổng giá
+        }
     }
 }

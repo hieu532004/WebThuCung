@@ -31,6 +31,8 @@ namespace WebThuCung.Models
         public string Email { get; set; }
 
         // Navigation Property
-        public ICollection<Role> Roles { get; set; }
+        [ForeignKey("Role")]
+        public string idRole { get; set; }
+        public Role Role { get; set; }
     }
 }

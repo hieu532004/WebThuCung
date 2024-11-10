@@ -13,7 +13,7 @@ namespace WebThuCung.Models
         [MaxLength(200)]
         public string nameProduct { get; set; }
 
-        public decimal? sellPrice { get; set; }
+        public decimal sellPrice { get; set; }
 
         [ForeignKey("Branch")]
         public string idBranch { get; set; }
@@ -21,8 +21,11 @@ namespace WebThuCung.Models
         [ForeignKey("Category")]
         public string idCategory { get; set; }
 
-        [ForeignKey("Color")]
-        public string idColor { get; set; }
+        [ForeignKey("Pet")]
+        // Foreign Key
+        public string idPet { get; set; }
+
+        // Navigation Propert
 
         [Required]
         public int Quantity { get; set; }
@@ -36,11 +39,15 @@ namespace WebThuCung.Models
 
         public Branch Branch { get; set; }
         public Category Category { get; set; }
-        public Color Color { get; set; }
+        public Pet Pet { get; set; }
+
         public ICollection<DetailVoteWarehouse> DetailVoteWarehouses { get; set; }
         public ICollection<Discount> Discounts { get; set; }
-        public ICollection<Shape> Shapes { get; set; }
-        public ICollection<Size> Sizes { get; set; }
+        public ICollection<ImageProduct> ImageProducts { get; set; }
+        public ICollection<ProductColor> ProductColors { get; set; }
+        public ICollection<ProductSize> ProductSizes { get; set; }
         public ICollection<DetailOrder> DetailOrders { get; set; }
+        public ICollection<SaveProduct> SaveProducts { get; set; } = new List<SaveProduct>();
+
     }
 }

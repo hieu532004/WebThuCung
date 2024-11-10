@@ -39,6 +39,15 @@ namespace WebThuCung.Dto
         public DateTime DateBirth { get; set; } // Viết hoa chữ cái đầu
 
         [Display(Name = "Địa chỉ:")]
-        public string? Address { get; set; } // Viết hoa chữ cái đầu
+        [Required(ErrorMessage = "Địa chỉ không được để trống.")]
+        public string Address { get; set; } // Viết hoa chữ cái đầu
+        [Required(ErrorMessage = "Quốc gia không được để trống.")]
+        public string idCountry { get; set; } // Tùy chọn, vì có thể null
+        [Required(ErrorMessage = "Thành phố không được để trống.")]
+        public string idCity { get; set; }
+        [Required(ErrorMessage = "Quận huyện không được để trống.")]
+        public string idDistrict { get; set; }
+        [Required(ErrorMessage = "Xã phường không được để trống.")]
+        public string idWard { get; set; }
     }
 }

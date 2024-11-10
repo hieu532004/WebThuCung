@@ -13,7 +13,7 @@ namespace WebThuCung.Models
         public string  idProduct { get; set; }
 
         [Required]
-        public int percent { get; set; }
+        public int discountPercent { get; set; }
         // Navigation Property
         [ForeignKey("idProduct")]
         public Product Product { get; set; }

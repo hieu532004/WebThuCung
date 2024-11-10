@@ -10,7 +10,7 @@ namespace WebThuCung.Models
         public string idBranch { get; set; }
 
         [Required, MaxLength(100)]
-        public string namBranch { get; set; }
+        public string nameBranch { get; set; }
 
         [MaxLength(100)]
         public string Logo { get; set; }

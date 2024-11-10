@@ -11,7 +11,7 @@ namespace WebThuCung.Models
 
         [Required]
         [MaxLength(200)]
-        public string namCategory { get; set; }
+        public string nameCategory { get; set; }
 
         // Navigation Property
         public ICollection<Product> Products { get; set; }

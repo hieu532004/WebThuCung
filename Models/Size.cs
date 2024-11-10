@@ -9,11 +9,8 @@ namespace WebThuCung.Models
         [Key]
         public string idSize { get; set; }
 
-        [ForeignKey("Product")]
-        public string idProduct { get; set; }
-
-        public int nameSize { get; set; }
+        public string nameSize { get; set; }
         // Navigation Property
-        public Product Product { get; set; }
+        public ICollection<ProductSize> ProductSizess { get; set; }
     }
 }

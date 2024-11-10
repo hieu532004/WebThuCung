@@ -27,8 +27,7 @@
         <div class="hero-content py-5 my-3">
             <h2 class="display-1 mt-3 mb-0">Account</h2>
             <nav class="breadcrumb">
-                <a class="breadcrumb-item nav-link" href="#">Home</a>
-                <a class="breadcrumb-item nav-link" href="#">Pages</a>
+                <a class="breadcrumb-item nav-link" asp-controller="User" asp-action="Index">Home</a>
                 <span class="breadcrumb-item active" aria-current="page">Account</span>
             </nav>
         </div>
@@ -44,7 +43,7 @@
                         <a  class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase" role="button">
                             Log In
                         </a>
-                        <a href="@Url.Action("Register", "User")" class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase active" id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register" aria-selected="true">
+                        <a href="@Url.Action("Register", "User")" class="nav-link mx-3 fs-3 border-bottom border-dark-subtle border-0 text-uppercase active" >
                             Sign Up
                         </a>
                     </div>
@@ -78,37 +77,50 @@
                             <p class="mb-0">Log-In With Email or Username</p>
                             <hr class="my-1">
 
-                            @using (Html.BeginForm("Login", "User", FormMethod.Post))
-                            {
+                            <form asp-action="Login" method="post">
                                 @Html.AntiForgeryToken()
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <!-- Validation Summary -->
+                                <div asp-validation-summary="All" class="text-danger"></div>
+
                                 <div class="form-group flex-wrap">
+                                    <!-- Username or Email -->
                                     <div class="form-input col-lg-12 my-4">
-                                        @Html.TextBoxFor(model => model.userName, new { @class = "form-control mb-3 p-4", placeholder = "Enter username or email address" })
-                                        @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                                        <label asp-for="userName" class="col-form-label"></label>
+                                        <input asp-for="userName" class="form-control mb-3 p-4" placeholder="Enter username or email address" style="text-transform: none;" />
+                                        <span asp-validation-for="userName" class="text-danger"></span>
+                                    </div>
 
-                                        @Html.PasswordFor(model => model.password, new { @class = "form-control mb-3 p-4", placeholder = "Enter password" })
-                                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                    <!-- Password -->
+                                    <div class="form-input col-lg-12 my-4">
+                                        <label asp-for="password" class="col-form-label"></label>
+                                        <input asp-for="password" type="password" class="form-control mb-3 p-4" placeholder="Enter password" style="text-transform: none;" />
+                                        <span asp-validation-for="password" class="text-danger"></span>
+                                    </div>
 
-                                        <label class="py-3 d-flex flex-wrap justify-content-between">
-                                            <div>
-                                                <input type="checkbox" class="d-inline">
-                                                <span class="label-body">Remember Me</span>
-                                            </div>
-
-                                            <div id="passwordHelpBlock" class="form-text">
-                                                <a href="@Url.Action("ForgotPassword", "User")" class="text-primary fw-bold">Forgot Password?</a>
-                                            </div>
-                                        </label>
-
-                                        <div class="d-grid my-3">
-                                            <input type="submit" value="Log In" class="btn btn-dark btn-lg rounded-1" />
+                                    <!-- Remember Me and Forgot Password -->
+                                    <label class="py-3 d-flex flex-wrap justify-content-between">
+                                        <div>
+                                            <input type="checkbox" class="d-inline" id="rememberMe" />
+                                            <label for="rememberMe" class="label-body">Remember Me</label>
                                         </div>
 
-                                        <p><a href="@Url.Action("Register", "User")" class="text-primary fw-bold">Create a new account</a></p>
+                                        <div id="passwordHelpBlock" class="form-text">
+                                            <a href="@Url.Action("ForgotPassword", "User")" class="text-primary fw-bold">Forgot Password?</a>
+                                        </div>
+                                    </label>
+
+                                    <!-- Submit Button -->
+                                    <div class="d-grid my-3">
+                                        <input type="submit" value="Log In" class="btn btn-dark btn-lg rounded-1" />
                                     </div>
+
+                                    <!-- Link to Register -->
+                                    <p>
+                                        <a href="@Url.Action("Register", "User")" class="text-primary fw-bold">Create a new account</a>
+                                    </p>
                                 </div>
-                            }
+                            </form><!-- End Login Form -->
                         </div>
                     </div>
 

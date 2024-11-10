@@ -1,0 +1,205 @@
+﻿@{
+    ViewData["Title"] = "Blog";
+    Layout = "~/Views/Shared/_LayoutUsers.cshtml";
+}
+
+<section id="banner" class="py-3" style="background: #F9F3EC;">
+    <div class="container">
+        <div class="hero-content py-5 my-3">
+            <h2 class="display-1 mt-3 mb-0">Blog</h2>
+            <nav class="breadcrumb">
+                <a class="breadcrumb-item nav-link" asp-controller="User" asp-action="Index">Home</a>
+                <span class="breadcrumb-item active" aria-current="page">Blog</span>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<div class="my-5 py-5">
+    <div class="container">
+        <div class="row entry-container">
+            <div class="entry-item col-md-4 my-4">
+                <div class="z-1 position-absolute rounded-3 m-2 px-3 pt-1 bg-light">
+                    <h3 class="secondary-font text-primary m-0">20</h3>
+                    <p class="secondary-font fs-6 m-0">Feb</p>
+                </div>
+                <div class="card position-relative">
+                    <a><img src="~/images/blog1.jpg" class="img-fluid rounded-4" alt="image"></a>
+                    <div class="card-body p-0">
+                        <a>
+                            <h3 class="card-title pt-4 pb-3 m-0">10 Reasons to be helpful towards any animals</h3>
+                        </a>
+                        <div class="card-text">
+                            <p class="blog-paragraph fs-6">
+                                At the core of our practice is the idea that cities are the incubators of
+                                our greatest achievements, and the best hope for a sustainable future.
+                            </p>
+                            <div class="more-content" style="display: none;">
+                                <p class="blog-paragraph fs-6">
+                                    Here are some additional insights on why helping animals is essential to our ecosystem and moral fabric as a society.
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="read-more" onclick="toggleReadMore(this)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry-item col-md-4 my-4">
+                <div class="z-1 position-absolute rounded-3 m-2 px-3 pt-1 bg-light">
+                    <h3 class="secondary-font text-primary m-0">21</h3>
+                    <p class="secondary-font fs-6 m-0">Feb</p>
+                </div>
+                <div class="card position-relative">
+                    <a><img src="~/images/blog2.jpg" class="img-fluid rounded-4" alt="image"></a>
+                    <div class="card-body p-0">
+                        <a>
+                            <h3 class="card-title pt-4 pb-3 m-0">How to know your pet is hungry</h3>
+                        </a>
+                        <div class="card-text">
+                            <p class="blog-paragraph fs-6">
+                                Understanding your pet's hunger cues is vital for their health. Pay attention to their behavior and feeding habits.
+                            </p>
+                            <div class="more-content" style="display: none;">
+                                <p class="blog-paragraph fs-6">
+                                    Regular feeding schedules can help, but be mindful of their needs based on activity level and age.
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="read-more" onclick="toggleReadMore(this)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry-item col-md-4 my-4">
+                <div class="z-1 position-absolute rounded-3 m-2 px-3 pt-1 bg-light">
+                    <h3 class="secondary-font text-primary m-0">22</h3>
+                    <p class="secondary-font fs-6 m-0">Feb</p>
+                </div>
+                <div class="card position-relative">
+                    <a><img src="~/images/blog3.jpg" class="img-fluid rounded-4" alt="image"></a>
+                    <div class="card-body p-0">
+                        <a>
+                            <h3 class="card-title pt-4 pb-3 m-0">Best home for your pets</h3>
+                        </a>
+                        <div class="card-text">
+                            <p class="blog-paragraph fs-6">
+                                Creating a safe and loving environment for your pets is essential. Make sure they have their own space.
+                            </p>
+                            <div class="more-content" style="display: none;">
+                                <p class="blog-paragraph fs-6">
+                                    Consider their comfort and needs, and ensure they have toys and areas to explore.
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="read-more" onclick="toggleReadMore(this)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry-item col-md-4 my-4">
+                <div class="z-1 position-absolute rounded-3 m-2 px-3 pt-1 bg-light">
+                    <h3 class="secondary-font text-primary m-0">23</h3>
+                    <p class="secondary-font fs-6 m-0">Feb</p>
+                </div>
+                <div class="card position-relative">
+                    <a><img src="~/images/blog1.jpg" class="img-fluid rounded-4" alt="image"></a>
+                    <div class="card-body p-0">
+                        <a>
+                            <h3 class="card-title pt-4 pb-3 m-0">The importance of regular vet check-ups</h3>
+                        </a>
+                        <div class="card-text">
+                            <p class="blog-paragraph fs-6">
+                                Regular vet visits are crucial for maintaining your pet's health and identifying potential issues early.
+                            </p>
+                            <div class="more-content" style="display: none;">
+                                <p class="blog-paragraph fs-6">
+                                    Vaccinations, dental care, and wellness checks can help prolong your pet's life and happiness.
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="read-more" onclick="toggleReadMore(this)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry-item col-md-4 my-4">
+                <div class="z-1 position-absolute rounded-3 m-2 px-3 pt-1 bg-light">
+                    <h3 class="secondary-font text-primary m-0">24</h3>
+                    <p class="secondary-font fs-6 m-0">Feb</p>
+                </div>
+                <div class="card position-relative">
+                    <a><img src="~/images/blog2.jpg" class="img-fluid rounded-4" alt="image"></a>
+                    <div class="card-body p-0">
+                        <a>
+                            <h3 class="card-title pt-4 pb-3 m-0">Training tips for your dog</h3>
+                        </a>
+                        <div class="card-text">
+                            <p class="blog-paragraph fs-6">
+                                Training your dog can strengthen your bond and ensure good behavior. Start with basic commands.
+                            </p>
+                            <div class="more-content" style="display: none;">
+                                <p class="blog-paragraph fs-6">
+                                    Consistency and positive reinforcement are key to effective training.
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="read-more" onclick="toggleReadMore(this)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry-item col-md-4 my-4">
+                <div class="z-1 position-absolute rounded-3 m-2 px-3 pt-1 bg-light">
+                    <h3 class="secondary-font text-primary m-0">25</h3>
+                    <p class="secondary-font fs-6 m-0">Feb</p>
+                </div>
+                <div class="card position-relative">
+                    <a><img src="~/images/blog3.jpg" class="img-fluid rounded-4" alt="image"></a>
+                    <div class="card-body p-0">
+                        <a>
+                            <h3 class="card-title pt-4 pb-3 m-0">Grooming your pets at home</h3>
+                        </a>
+                        <div class="card-text">
+                            <p class="blog-paragraph fs-6">
+                                Regular grooming keeps your pets healthy and looking great. Learn how to do it properly at home.
+                            </p>
+                            <div class="more-content" style="display: none;">
+                                <p class="blog-paragraph fs-6">
+                                    Use the right tools and techniques for your pet's breed and coat type for the best results.
+                                </p>
+                            </div>
+                            <a href="javascript:void(0);" class="read-more" onclick="toggleReadMore(this)">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navigation paging-navigation text-center mt-3" role="navigation">
+            <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+                <a href="#" class="pagination-arrow d-flex align-items-center mx-3">
+                    <iconify-icon icon="ic:baseline-keyboard-arrow-left" class="pagination-arrow fs-1"></iconify-icon>
+                </a>
+                <span aria-current="page" class="page-numbers mt-2 fs-3 mx-3 current">1</span>
+                <a class="page-numbers mt-2 fs-3 mx-3" href="#">2</a>
+                <a class="page-numbers mt-2 fs-3 mx-3" href="#">3</a>
+                <a href="#" class="pagination-arrow d-flex align-items-center mx-3">
+                    <iconify-icon icon="ic:baseline-keyboard-arrow-right" class="pagination-arrow fs-1"></iconify-icon>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<script>
+    function toggleReadMore(link) {
+        const moreContent = link.previousElementSibling; // Lấy phần nội dung thêm
+        if (moreContent.style.display === "none" || moreContent.style.display === "") {
+            moreContent.style.display = "block"; // Hiện nội dung
+            link.innerText = "Read less"; // Thay đổi nội dung link
+        } else {
+            moreContent.style.display = "none"; // Ẩn nội dung
+            link.innerText = "Read more"; // Khôi phục nội dung link
+        }
+    }
+</script>
